@@ -24,9 +24,7 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <h3 className="text-2xl font-bold text-orange-400 mb-4">KIRAN CAKE PARLOUR</h3>
-                <p className="text-gray-300">
-                  Crafting the finest cakes in London with love, passion, and the finest ingredients.
-                </p>
+                <p className="text-gray-300">Crafting the finest cakes in Biratnagar with love, passion, and the finest ingredients.</p>
               </div>
               
               <div>
@@ -43,7 +41,7 @@ const Index = () => {
                 <h4 className="text-lg font-semibold mb-4">Contact</h4>
                 <ul className="space-y-2 text-gray-300">
                   <li>Traffic Chowk, Biratnagar</li>
-                  <li>9842093801</li>
+                  <li> 021-535768</li>
                   <li>info@kirancakeparlour.com</li>
                 </ul>
               </div>
@@ -51,8 +49,8 @@ const Index = () => {
               <div>
                 <h4 className="text-lg font-semibold mb-4">Opening Hours</h4>
                 <ul className="space-y-2 text-gray-300">
-                  <li>Mon - Sat: 8:00 AM - 8:00 PM</li>
-                  <li>Sunday: 9:00 AM - 6:00 PM</li>
+                  <li>Sun - Sat: 8:00 AM - 9:00 PM</li>
+                  
                 </ul>
               </div>
             </div>
