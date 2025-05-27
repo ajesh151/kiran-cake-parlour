@@ -26,27 +26,6 @@ const KiranWalletSection = () => {
     }
   ];
 
-  const chefs = [
-    {
-      name: "Kiran Singh",
-      title: "Master Baker",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      experience: "15+ Years"
-    },
-    {
-      name: "Priya Sharma",
-      title: "Cake Designer",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      experience: "12+ Years"
-    },
-    {
-      name: "Raj Patel",
-      title: "Pastry Chef",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      experience: "10+ Years"
-    }
-  ];
-
   return (
     <section id="wallet" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
@@ -73,37 +52,10 @@ const KiranWalletSection = () => {
           ))}
         </div>
         
-        <div className="text-center mb-16">
+        <div className="text-center">
           <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors">
             Create Your Kiran Wallet
           </button>
-        </div>
-        
-        {/* Master Chefs Section */}
-        <div className="border-t border-gray-700 pt-16">
-          <div className="text-center mb-12">
-            <h3 className="text-orange-400 text-lg font-medium mb-4">Our Team</h3>
-            <h2 className="text-3xl md:text-4xl font-bold">OUR MASTER CHEFS</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {chefs.map((chef, index) => (
-              <div key={index} className="text-center">
-                <div className="relative mb-6">
-                  <img
-                    src={chef.image}
-                    alt={chef.name}
-                    className="w-48 h-48 rounded-full mx-auto object-cover border-4 border-orange-500"
-                  />
-                  <div className="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    {chef.experience}
-                  </div>
-                </div>
-                <h4 className="text-xl font-bold mb-2">{chef.name}</h4>
-                <p className="text-orange-400 font-medium">{chef.title}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
