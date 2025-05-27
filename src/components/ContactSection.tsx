@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-
 const ContactSection = () => {
-  return (
-    <section id="contact" className="py-20 bg-white">
+  return <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h3 className="text-orange-400 text-lg font-medium mb-4">Get In Touch</h3>
@@ -23,7 +20,7 @@ const ContactSection = () => {
                 <MapPin className="text-orange-500 mt-1" size={24} />
                 <div>
                   <h4 className="font-semibold text-gray-900">Address</h4>
-                  <p className="text-gray-600">123 Baker Street, London, UK SW1A 1AA</p>
+                  <p className="text-gray-600"> Traffic Chowk, Biratnagar</p>
                 </div>
               </div>
               
@@ -64,21 +61,13 @@ const ContactSection = () => {
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                     First Name
                   </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                  />
+                  <input type="text" id="firstName" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
                     Last Name
                   </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                  />
+                  <input type="text" id="lastName" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" />
                 </div>
               </div>
               
@@ -86,47 +75,30 @@ const ContactSection = () => {
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                />
+                <input type="email" id="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" />
               </div>
               
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                   Subject
                 </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                />
+                <input type="text" id="subject" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500" />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Message
                 </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"
-                ></textarea>
+                <textarea id="message" rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500"></textarea>
               </div>
               
-              <button
-                type="submit"
-                className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
-              >
+              <button type="submit" className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
                 Send Message
               </button>
             </form>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
