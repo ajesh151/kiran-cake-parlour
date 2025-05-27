@@ -49,7 +49,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-orange-400">KIRAN CAKE PARLOUR</h1>
+            <img 
+              src="/lovable-uploads/4720b749-946d-4875-97c9-82e93591461a.png" 
+              alt="Kiran Cake Parlour" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
           
           {/* Desktop Navigation */}

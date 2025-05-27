@@ -15,7 +15,7 @@ const MenuSection = () => {
         {
           id: 1,
           name: 'Chocolate Birthday Delight',
-          price: '₹450',
+          price: '₹45',
           image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Rich chocolate cake with vanilla frosting and colorful decorations'
@@ -23,7 +23,7 @@ const MenuSection = () => {
         {
           id: 2,
           name: 'Rainbow Birthday Cake',
-          price: '₹500',
+          price: '₹50',
           image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Multi-layered rainbow cake with buttercream frosting'
@@ -31,7 +31,7 @@ const MenuSection = () => {
         {
           id: 3,
           name: 'Strawberry Birthday Special',
-          price: '₹400',
+          price: '₹40',
           image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 4,
           description: 'Fresh strawberry cake with cream cheese frosting'
@@ -45,7 +45,7 @@ const MenuSection = () => {
         {
           id: 4,
           name: 'Elegant White Wedding Cake',
-          price: '₹1500',
+          price: '₹150',
           image: 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Three-tier white wedding cake with elegant floral decorations'
@@ -53,7 +53,7 @@ const MenuSection = () => {
         {
           id: 5,
           name: 'Rose Garden Wedding Cake',
-          price: '₹1800',
+          price: '₹180',
           image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Beautiful rose-decorated wedding cake with gold accents'
@@ -61,7 +61,7 @@ const MenuSection = () => {
         {
           id: 6,
           name: 'Classic Tiered Wedding Cake',
-          price: '₹2000',
+          price: '₹200',
           image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Four-tier classic wedding cake with intricate piping'
@@ -75,7 +75,7 @@ const MenuSection = () => {
         {
           id: 7,
           name: 'Custom Theme Cake',
-          price: '₹600',
+          price: '₹60',
           image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Personalized cake designed to your specifications'
@@ -83,7 +83,7 @@ const MenuSection = () => {
         {
           id: 8,
           name: 'Corporate Event Cake',
-          price: '₹800',
+          price: '₹80',
           image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 4,
           description: 'Professional cakes for corporate events and celebrations'
@@ -91,7 +91,7 @@ const MenuSection = () => {
         {
           id: 9,
           name: 'Character Design Cake',
-          price: '₹700',
+          price: '₹70',
           image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
           description: 'Fun character-themed cakes for special occasions'
@@ -105,26 +105,50 @@ const MenuSection = () => {
         {
           id: 10,
           name: 'Mini Chocolate Bento',
-          price: '₹250',
-          image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          price: '₹25',
+          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
           rating: 5,
           description: 'Small personal-sized chocolate cake perfect for individual celebrations'
         },
         {
           id: 11,
           name: 'Vanilla Berry Bento',
-          price: '₹280',
-          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          price: '₹28',
+          image: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
           rating: 5,
           description: 'Personal vanilla cake topped with fresh berries and cream'
         },
         {
           id: 12,
           name: 'Red Velvet Bento',
-          price: '₹300',
-          image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          price: '₹30',
+          image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
           rating: 4,
           description: 'Individual red velvet cake with cream cheese frosting'
+        },
+        {
+          id: 13,
+          name: 'Strawberry Bento Delight',
+          price: '₹27',
+          image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          rating: 5,
+          description: 'Cute strawberry-flavored mini cake with pink frosting'
+        },
+        {
+          id: 14,
+          name: 'Coffee Caramel Bento',
+          price: '₹32',
+          image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          rating: 4,
+          description: 'Rich coffee-flavored bento cake with caramel drizzle'
+        },
+        {
+          id: 15,
+          name: 'Lemon Zest Bento',
+          price: '₹26',
+          image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          rating: 5,
+          description: 'Fresh lemon-flavored mini cake with citrus frosting'
         }
       ]
     }
