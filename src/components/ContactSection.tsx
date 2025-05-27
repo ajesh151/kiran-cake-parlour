@@ -28,7 +28,7 @@ const ContactSection = () => {
                 <Phone className="text-orange-500 mt-1" size={24} />
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+44 20 7946 0958</p>
+                  <p className="text-gray-600">9842093801 / 9804341808 / 021-535768</p>
                 </div>
               </div>
               
@@ -44,8 +44,8 @@ const ContactSection = () => {
                 <Clock className="text-orange-500 mt-1" size={24} />
                 <div>
                   <h4 className="font-semibold text-gray-900">Opening Hours</h4>
-                  <p className="text-gray-600">Mon - Sat: 8:00 AM - 8:00 PM</p>
-                  <p className="text-gray-600">Sunday: 9:00 AM - 6:00 PM</p>
+                  <p className="text-gray-600">Sun - Sat: 8:00 AM - 9:00 PM</p>
+                  
                 </div>
               </div>
             </div>
