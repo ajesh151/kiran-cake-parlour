@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Award, Heart, Star, Users, Check, MugHot } from 'lucide-react';
+import { Award, Heart, Star, Users, Check, Coffee } from 'lucide-react';
 
 const AboutSection = () => {
   const statistics = [
@@ -20,7 +20,7 @@ const AboutSection = () => {
       count: "12345"
     },
     {
-      icon: <MugHot className="w-8 h-8 text-white" />,
+      icon: <Coffee className="w-8 h-8 text-white" />,
       title: "Happy Clients",
       count: "12345"
     }
