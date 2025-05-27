@@ -112,20 +112,6 @@ const MenuSection = () => {
       image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
       rating: 5,
       description: 'Cute strawberry-flavored mini cake with pink frosting'
-    }, {
-      id: 14,
-      name: 'Coffee Caramel Bento',
-      price: '₹300',
-      image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
-      rating: 4,
-      description: 'Rich coffee-flavored bento cake with caramel drizzle'
-    }, {
-      id: 15,
-      name: 'Lemon Zest Bento',
-      price: '₹300',
-      image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
-      rating: 5,
-      description: 'Fresh lemon-flavored mini cake with citrus frosting'
     }]
   }];
   const currentCategory = menuCategories.find(cat => cat.id === activeCategory);
