@@ -1,8 +1,11 @@
-
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Award, Heart, Star, Users, Check, Coffee } from 'lucide-react';
 
 const AboutSection = () => {
+  const [counters, setCounters] = useState([0, 0, 0, 0]);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statisticsRef = useRef<HTMLDivElement>(null);
+
   const statistics = [
     {
       icon: <Star className="w-8 h-8 text-white" />,
@@ -25,6 +28,43 @@ const AboutSection = () => {
       count: "12345"
     }
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          animateCounters();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statisticsRef.current) {
+      observer.observe(statisticsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  const animateCounters = () => {
+    const duration = 2000; // 2 seconds
+    const targetValue = 12345;
+    const steps = 60; // Number of animation steps
+    const increment = targetValue / steps;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const currentValue = Math.min(Math.floor(increment * currentStep), targetValue);
+      
+      setCounters([currentValue, currentValue, currentValue, currentValue]);
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+      }
+    }, duration / steps);
+  };
 
   const chefs = [
     {
@@ -98,7 +138,7 @@ const AboutSection = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-16 rounded-lg mb-20">
+        <div ref={statisticsRef} className="bg-gradient-to-r from-gray-900 to-gray-800 py-16 rounded-lg mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {statistics.map((stat, index) => (
               <div key={index} className="flex items-center justify-center">
@@ -107,7 +147,7 @@ const AboutSection = () => {
                 </div>
                 <div>
                   <h6 className="text-orange-400 text-sm font-medium uppercase mb-1">{stat.title}</h6>
-                  <h1 className="text-4xl font-bold text-white">{stat.count}</h1>
+                  <h1 className="text-4xl font-bold text-white">{counters[index].toLocaleString()}</h1>
                 </div>
               </div>
             ))}
