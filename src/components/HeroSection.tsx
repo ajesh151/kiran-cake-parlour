@@ -19,11 +19,11 @@ const HeroSection = () => {
       <div className="relative container mx-auto px-4 pt-20 pb-16 flex items-center min-h-screen">
         <div className="w-full md:w-1/2">
           <div className="mb-6">
-            <span className="text-orange-400 text-lg font-medium">Super Crispy</span>
+            
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight">
             KIRAN CAKE<br />
-            <span className="text-orange-400">PARLOUR</span>
+            <span className="text-[#ee6030] mx-0 my-0 font-bold py-0">PARLOUR</span>
           </h1>
           <p className="mb-8 text-red-500 text-2xl">Life is short. Make it sweet</p>
           
@@ -39,7 +39,7 @@ const HeroSection = () => {
           </div>
           
           <div className="mt-12 text-orange-400 text-right">
-            <p className="text-3xl font-bold">25% DISCOUNT FOR THIS SUMMER</p>
+            <p className="text-left px-[2px] py-0 my-0 mx-0 font-bold text-[s#] text-[#ee6030]">THE BEST CAKES IN BIRATNAGAR</p>
           </div>
         </div>
       </div>
