@@ -62,8 +62,8 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-orange-400 ${
-                  activeSection === item.id ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-white'
+                className={`text-sm font-medium transition-colors duration-300 hover:text-ee6030 ${
+                  activeSection === item.id ? 'text-ee6030 border-b-2 border-ee6030 pb-1' : 'text-white'
                 }`}
               >
                 {item.label}
@@ -94,8 +94,8 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-orange-400 ${
-                  activeSection === item.id ? 'text-orange-400' : 'text-white'
+                className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-ee6030 ${
+                  activeSection === item.id ? 'text-ee6030' : 'text-white'
                 }`}
               >
                 {item.label}
