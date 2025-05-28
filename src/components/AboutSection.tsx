@@ -81,15 +81,9 @@ const AboutSection = () => {
           </div>
           
           <div>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-              Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. 
-              Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
-            </p>
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">Kiran Cake Parlour began with a simple love for baking and a dream to bring joy through sweet, memorable treats. What started in a small kitchen has grown into a place where every cake is made with heart, using fresh ingredients and a personal touch.</p>
             
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              Labore elitr lorem in duo clita. Diam dolor ipsum amet diam justo clita erat lorem magna magna clita. 
-              Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
-            </p>
+            <p className="text-gray-600 mb-8 leading-relaxed">We’re here for your birthdays, weddings, and quiet moments in between. Every order is special to us, and we’re grateful to be part of your story—one slice at a time.</p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-orange-500 text-white p-6 rounded-lg text-center">
