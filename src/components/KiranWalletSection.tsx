@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Wallet, Gift, CreditCard, Percent } from 'lucide-react';
+import { Wallet, Gift, CreditCard, Percent, Star } from 'lucide-react';
 
 const KiranWalletSection = () => {
   const walletFeatures = [
@@ -39,8 +39,29 @@ const KiranWalletSection = () => {
             Experience seamless payments and exclusive rewards with Kiran Wallet - your digital companion for all cake orders
           </p>
         </div>
+
+        {/* Wallet Status */}
+        <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-8 mb-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <div className="flex items-center justify-center space-x-2 mb-2">
+                <Wallet className="w-6 h-6" />
+                <h3 className="text-xl font-bold">Wallet Balance</h3>
+              </div>
+              <p className="text-3xl font-bold">Rs.150</p>
+            </div>
+            <div>
+              <div className="flex items-center justify-center space-x-2 mb-2">
+                <Star className="w-6 h-6" />
+                <h3 className="text-xl font-bold">Reward Points</h3>
+              </div>
+              <p className="text-3xl font-bold">2,450 Points</p>
+              <p className="text-sm opacity-90">= Rs.245 in rewards</p>
+            </div>
+          </div>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {walletFeatures.map((feature, index) => (
             <div key={index} className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition-colors">
               <div className="flex justify-center mb-4">
@@ -50,12 +71,6 @@ const KiranWalletSection = () => {
               <p className="text-gray-300">{feature.description}</p>
             </div>
           ))}
-        </div>
-        
-        <div className="text-center">
-          <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors">
-            Create Your Kiran Wallet
-          </button>
         </div>
       </div>
     </section>

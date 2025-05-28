@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CreditCard, Lock, ArrowLeft } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
@@ -24,7 +23,7 @@ const PaymentSection = ({ onBack }: PaymentSectionProps) => {
 
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
-      const price = parseInt(item.price.replace('₹', ''));
+      const price = parseInt(item.price.replace('Rs.', ''));
       return total + (price * item.quantity);
     }, 0);
   };
@@ -80,7 +79,7 @@ const PaymentSection = ({ onBack }: PaymentSectionProps) => {
             <div className="border-t pt-4">
               <div className="flex justify-between items-center">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-2xl font-bold text-orange-500">₹{getTotalPrice()}</span>
+                <span className="text-2xl font-bold text-orange-500">Rs.{getTotalPrice()}</span>
               </div>
             </div>
           </div>
@@ -209,7 +208,7 @@ const PaymentSection = ({ onBack }: PaymentSectionProps) => {
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
               >
                 <CreditCard size={20} />
-                <span>Complete Payment - ₹{getTotalPrice()}</span>
+                <span>Complete Payment - Rs.{getTotalPrice()}</span>
               </button>
             </form>
           </div>

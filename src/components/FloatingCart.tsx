@@ -11,7 +11,7 @@ const FloatingCart = () => {
 
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
-      const price = parseInt(item.price.replace('₹', ''));
+      const price = parseInt(item.price.replace('Rs.', ''));
       return total + (price * item.quantity);
     }, 0);
   };
@@ -89,7 +89,7 @@ const FloatingCart = () => {
             <div className="mt-6 border-t pt-6">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-lg font-semibold">Total:</span>
-                <span className="text-xl font-bold text-orange-500">₹{getTotalPrice()}</span>
+                <span className="text-xl font-bold text-orange-500">Rs.{getTotalPrice()}</span>
               </div>
               <button 
                 onClick={() => setShowPayment(true)}
