@@ -89,17 +89,13 @@ const AboutSection = () => {
               <div className="bg-orange-500 text-white p-6 rounded-lg text-center">
                 <Heart className="mx-auto mb-4" size={40} />
                 <h4 className="text-xl font-bold mb-2">100% HEALTHY</h4>
-                <p className="text-sm">
-                  Lorem ipsum dolor sit amet elit. Phasellus laoreet nunc quis sagittis leo et.
-                </p>
+                <p className="text-sm">We use fresh, natural ingredients—no shortcuts, no preservatives, just honest goodness inside.</p>
               </div>
               
               <div className="bg-orange-500 text-white p-6 rounded-lg text-center">
                 <Award className="mx-auto mb-4" size={40} />
                 <h4 className="text-xl font-bold mb-2">AWARD WINNING</h4>
-                <p className="text-sm">
-                  Lorem ipsum dolor sit amet elit. Phasellus laoreet nunc quis sagittis leo et.
-                </p>
+                <p className="text-sm">Recognized for taste and quality, our cakes have won hearts and local baking awards.</p>
               </div>
             </div>
           </div>
