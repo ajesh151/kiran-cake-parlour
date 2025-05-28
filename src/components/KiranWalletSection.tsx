@@ -1,8 +1,12 @@
 
 import React from 'react';
-import { Wallet, Gift, CreditCard, Percent } from 'lucide-react';
+import { Wallet, Gift, CreditCard, Percent, Star } from 'lucide-react';
 
 const KiranWalletSection = () => {
+  // Mock customer data - in a real app this would come from user authentication/database
+  const customerRewardPoints = 2450;
+  const customerWalletBalance = 150;
+
   const walletFeatures = [
     {
       icon: <Wallet className="w-12 h-12 text-orange-500" />,
@@ -38,6 +42,27 @@ const KiranWalletSection = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Experience seamless payments and exclusive rewards with Kiran Wallet - your digital companion for all cake orders
           </p>
+        </div>
+
+        {/* Customer Wallet Status */}
+        <div className="flex flex-col md:flex-row justify-center gap-8 mb-16">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-8 rounded-lg text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Wallet className="w-8 h-8 text-white mr-2" />
+              <h4 className="text-2xl font-bold text-white">Wallet Balance</h4>
+            </div>
+            <p className="text-4xl font-bold text-white">₹{customerWalletBalance}</p>
+            <p className="text-orange-100 mt-2">Available to spend</p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 p-8 rounded-lg text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Star className="w-8 h-8 text-white mr-2" />
+              <h4 className="text-2xl font-bold text-white">Reward Points</h4>
+            </div>
+            <p className="text-4xl font-bold text-white">{customerRewardPoints.toLocaleString()}</p>
+            <p className="text-yellow-100 mt-2">Points earned</p>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">

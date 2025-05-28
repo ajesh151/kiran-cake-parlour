@@ -1,13 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ShoppingCart, X, Plus, Minus } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import PaymentSection from './PaymentSection';
 
 const FloatingCart = () => {
   const { items, totalItems, updateQuantity, removeFromCart, clearCart } = useCart();
-  const [showPayment, setShowPayment] = useState(false);
 
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
@@ -15,10 +13,6 @@ const FloatingCart = () => {
       return total + (price * item.quantity);
     }, 0);
   };
-
-  if (showPayment) {
-    return <PaymentSection onBack={() => setShowPayment(false)} />;
-  }
 
   if (totalItems === 0) return null;
 
@@ -91,10 +85,7 @@ const FloatingCart = () => {
                 <span className="text-lg font-semibold">Total:</span>
                 <span className="text-xl font-bold text-orange-500">₹{getTotalPrice()}</span>
               </div>
-              <button 
-                onClick={() => setShowPayment(true)}
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition-colors"
-              >
+              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition-colors">
                 Proceed to Checkout
               </button>
             </div>
