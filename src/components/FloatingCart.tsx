@@ -16,7 +16,6 @@ const FloatingCart = () => {
     }, 0);
   };
 
-  if (totalItems === 0) return null;
 
   return (
     <>
