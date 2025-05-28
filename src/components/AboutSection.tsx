@@ -81,7 +81,7 @@ const AboutSection = () => {
           </div>
           
           <div>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">Kiran Cake Parlour began with a simple love for baking and a dream to bring joy through sweet, memorable treats. What started in a small kitchen has grown into a place where every cake is made with heart, using fresh ingredients and a personal touch.</p>
+            <p className="text-gray-600 text-lg mb-6 leading-relaxed">Kiran Cake Parlour began with a simple love for baking and a dream to bring joy through sweet, memorable treats. What started in a small kitchen has grown into a place where every cake is made with heart, using fresh ingredients and a personal touch.</p>
             
             <p className="text-gray-600 mb-8 leading-relaxed">We’re here for your birthdays, weddings, and quiet moments in between. Every order is special to us, and we’re grateful to be part of your story—one slice at a time.</p>
             
