@@ -25,7 +25,7 @@ const HeroSection = () => {
             KIRAN CAKE<br />
             <span className="text-orange-400">PARLOUR</span>
           </h1>
-          <p className="text-xl mb-8 text-red-500">Life is short. Make it sweet</p>
+          <p className="mb-8 text-red-500 text-2xl">Life is short. Make it sweet</p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => scrollToSection('menu')} className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2">
