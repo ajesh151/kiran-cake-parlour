@@ -66,7 +66,7 @@ const HeroSection = () => {
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                src="https://youtu.be/k7fefdiTE7A?si=yRXKV1hr8TOP-eM5"
                 title="Kiran Cake Parlour Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
