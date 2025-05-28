@@ -25,7 +25,7 @@ const HeroSection = () => {
             KIRAN CAKE<br />
             <span className="text-[#ee6030] mx-0 my-0 font-bold py-0">PARLOUR</span>
           </h1>
-          <p className="mb-8 text-red-500 text-2xl">Life is short. Make it sweet</p>
+          <p className="mb-8 text-red-500 text-2xl font-semibold">Life is short. Make it sweet</p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <button onClick={() => scrollToSection('menu')} className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2">
@@ -39,7 +39,7 @@ const HeroSection = () => {
           </div>
           
           <div className="mt-12 text-orange-400 text-right">
-            <p className="text-left px-[2px] py-0 my-0 mx-0 font-bold text-[s#] text-[#ee6030]">THE BEST CAKES IN BIRATNAGAR</p>
+            
           </div>
         </div>
       </div>
