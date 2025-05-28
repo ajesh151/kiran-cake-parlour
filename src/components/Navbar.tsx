@@ -51,7 +51,7 @@ const Navbar = () => {
     label: 'CONTACT US'
   }];
   return <nav className="fixed top-0 w-full bg-gray-900 text-white z-50 shadow-lg">
-      <div className="container mx-auto px-4 bg-[#010101]/[0.92]">
+      <div className="container mx-auto px-4 bg-gray-900">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
             <img src="/lovable-uploads/4720b749-946d-4875-97c9-82e93591461a.png" alt="Kiran Cake Parlour" className="h-12 w-auto object-contain" />
