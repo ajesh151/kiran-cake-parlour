@@ -105,7 +105,7 @@ const MenuSection = () => {
           id: 10,
           name: 'Mini Chocolate Bento',
           price: 'Rs.300',
-          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          image: '/lovable-uploads/bf0b22ec-6474-49d5-8c17-0d36cee77891.png',
           rating: 5,
           description: 'Small personal-sized chocolate cake perfect for individual celebrations'
         },
@@ -113,23 +113,15 @@ const MenuSection = () => {
           id: 11,
           name: 'Vanilla Berry Bento',
           price: 'Rs.300',
-          image: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          image: '/lovable-uploads/7fceff04-0aab-4625-a305-d89ee0a276db.png',
           rating: 5,
           description: 'Personal vanilla cake topped with fresh berries and cream'
-        },
-        {
-          id: 12,
-          name: 'Red Velvet Bento',
-          price: 'Rs.300',
-          image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
-          rating: 4,
-          description: 'Individual red velvet cake with cream cheese frosting'
         },
         {
           id: 13,
           name: 'Strawberry Bento Delight',
           price: 'Rs.300',
-          image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80',
+          image: '/lovable-uploads/57d998e4-410a-4599-ae77-945c0df9d164.png',
           rating: 5,
           description: 'Cute strawberry-flavored mini cake with pink frosting'
         }
