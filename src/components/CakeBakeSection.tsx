@@ -126,9 +126,7 @@ const CakeBakeSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h3 className="text-orange-400 font-medium mb-4 text-4xl">Cake Bake</h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-            FRESH BAKED DAILY
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">BAKE YOUR OWN CAKE</h2>
         </div>
         
         {/* Category Tabs */}
