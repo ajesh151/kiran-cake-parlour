@@ -7,21 +7,21 @@ const AboutSection = () => {
   const statistics = [{
     icon: <Star className="w-8 h-8 text-white" />,
     title: "Our Experience",
-    count: "8,750"
+    count: "12,345"
   }, {
     icon: <Users className="w-8 h-8 text-white" />,
     title: "Cake Specialist",
-    count: "3,420"
+    count: "12,345"
   }, {
     icon: <Check className="w-8 h-8 text-white" />,
     title: "Complete Project",
-    count: "15,680"
+    count: "12,345"
   }, {
     icon: <Coffee className="w-8 h-8 text-white" />,
     title: "Happy Clients",
-    count: "9,230"
+    count: "12,345"
   }];
-  const targetValues = [8750, 3420, 15680, 9230];
+  const targetValues = [12345, 12345, 12345, 12345];
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !hasAnimated) {
