@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
@@ -9,10 +8,8 @@ import KiranWalletSection from '../components/KiranWalletSection';
 import ContactSection from '../components/ContactSection';
 import CartProvider from '../components/CartProvider';
 import FloatingCart from '../components/FloatingCart';
-
 const Index = () => {
-  return (
-    <CartProvider>
+  return <CartProvider>
       <div className="min-h-screen">
         <Navbar />
         <HeroSection />
@@ -32,9 +29,9 @@ const Index = () => {
                 <div className="text-gray-300">
                   <h4 className="font-semibold mb-2">Our Outlets:</h4>
                   <ul className="space-y-1">
-                    <li>• Traffic Chowk, Biratnagar (Main Branch)</li>
-                    <li>• Mahendra Chowk, Biratnagar</li>
-                    <li>• Rangeli Road, Biratnagar</li>
+                    <li>• Opposite to Shikshadeep College, Biratnagar</li>
+                    <li>• New Gudri, Biratnagar</li>
+                    <li>• Kali Mandir, Rangeli Road, Biratnagar</li>
                   </ul>
                 </div>
               </div>
@@ -73,8 +70,6 @@ const Index = () => {
           </div>
         </footer>
       </div>
-    </CartProvider>
-  );
+    </CartProvider>;
 };
-
 export default Index;
