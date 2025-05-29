@@ -170,27 +170,27 @@ const CakeBakeSection = () => {
         {selectedItem && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
             <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900">{selectedItem.name}</h3>
-                  <button
-                    onClick={closeModal}
-                    className="text-gray-500 hover:text-gray-700 text-2xl"
-                  >
-                    ×
-                  </button>
-                </div>
-                
-                <img
-                  src={selectedItem.image}
-                  alt={selectedItem.name}
-                  className="w-full h-64 object-cover rounded-lg mb-6"
-                />
-                
-                <p className="text-gray-600 mb-6">{selectedItem.description}</p>
-                
-                <ScrollArea className="h-64">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ScrollArea className="h-[90vh]">
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-bold text-gray-900">{selectedItem.name}</h3>
+                    <button
+                      onClick={closeModal}
+                      className="text-gray-500 hover:text-gray-700 text-2xl"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.name}
+                    className="w-full h-64 object-cover rounded-lg mb-6"
+                  />
+                  
+                  <p className="text-gray-600 mb-6">{selectedItem.description}</p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
                       <div className="flex items-center space-x-2 mb-4">
                         <Utensils className="text-orange-500" size={20} />
@@ -214,22 +214,22 @@ const CakeBakeSection = () => {
                       <p className="text-gray-600 text-xl font-medium">{selectedItem.bakeTime}</p>
                     </div>
                   </div>
-                </ScrollArea>
-                
-                <div className="mt-8 flex items-center justify-between">
-                  <span className="text-2xl font-bold text-orange-500">{selectedItem.price}</span>
-                  <button
-                    onClick={() => {
-                      handleAddToCart(selectedItem);
-                      closeModal();
-                    }}
-                    className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2"
-                  >
-                    <ShoppingCart size={20} />
-                    <span>Add to Cart</span>
-                  </button>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold text-orange-500">{selectedItem.price}</span>
+                    <button
+                      onClick={() => {
+                        handleAddToCart(selectedItem);
+                        closeModal();
+                      }}
+                      className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2"
+                    >
+                      <ShoppingCart size={20} />
+                      <span>Add to Cart</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </ScrollArea>
             </div>
           </div>
         )}
