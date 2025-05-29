@@ -30,8 +30,11 @@ const Index = () => {
                   <h4 className="font-semibold mb-2">Our Outlets:</h4>
                   <ul className="space-y-1">
                     <li>• Opposite to Shikshadeep College, Biratnagar</li>
+                    <li>• Mahendra Chowk, Biratnagar</li>
                     <li>• New Gudri, Biratnagar</li>
-                    <li>• Kali Mandir, Rangeli Road, Biratnagar</li>
+                    <li>• Kali Mandir, Rangeli</li>
+                    <li>• Inaruwa-1, Mainroad</li>
+                    <li>• Dharambandh Road, Biratnagar</li>
                   </ul>
                 </div>
               </div>
