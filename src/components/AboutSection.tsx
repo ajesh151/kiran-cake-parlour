@@ -50,22 +50,6 @@ const AboutSection = () => {
       }
     }, duration / steps);
   };
-  const chefs = [{
-    name: "Kiran Singh",
-    title: "Master Baker",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-    experience: "15+ Years"
-  }, {
-    name: "Priya Sharma",
-    title: "Cake Designer",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-    experience: "12+ Years"
-  }, {
-    name: "Raj Patel",
-    title: "Pastry Chef",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-    experience: "10+ Years"
-  }];
   return <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
