@@ -31,7 +31,7 @@ const MenuSection = () => {
           id: 3,
           name: 'Strawberry Birthday Special',
           price: 'Rs.700',
-          image: '/lovable-uploads/b3f6b7b4-5d8f-4e2e-9a1c-1234567890ab.png',
+          image: '/lovable-uploads/b042d9a8-659d-47e1-8fe9-625e706e16b4.png',
           rating: 4,
           description: 'Fresh strawberry cake with cream cheese frosting'
         }

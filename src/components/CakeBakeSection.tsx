@@ -4,50 +4,44 @@ import { Star, ShoppingCart, Clock, Utensils } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 
 const CakeBakeSection = () => {
-  const [activeCategory, setActiveCategory] = useState('signature');
+  const [activeCategory, setActiveCategory] = useState('treats');
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const { addToCart } = useCart();
 
   const bakeCategories = [
     {
-      id: 'signature',
-      name: 'Signature Bakes',
+      id: 'treats',
+      name: 'Sweet Treats',
       items: [
         {
           id: 101,
-          name: 'Classic Chocolate Fudge',
-          price: 'Rs.800',
-          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          name: 'Classic Vanilla Cupcakes',
+          price: 'Rs.250',
+          image: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
           rating: 5,
-          description: 'Rich, decadent chocolate cake with fudge layers',
-          ingredients: ['Dark chocolate', 'Butter', 'Eggs', 'Sugar', 'Flour', 'Cocoa powder'],
-          bakeTime: '45 minutes'
+          description: 'Fluffy vanilla cupcakes with buttercream frosting',
+          ingredients: ['Vanilla extract', 'Butter', 'Eggs', 'Sugar', 'Flour', 'Milk', 'Baking powder'],
+          bakeTime: '20 minutes'
         },
         {
           id: 102,
-          name: 'Vanilla Bean Delight',
-          price: 'Rs.650',
-          image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-          rating: 4,
-          description: 'Light and fluffy vanilla cake with real vanilla beans',
-          ingredients: ['Vanilla beans', 'Butter', 'Eggs', 'Sugar', 'Flour', 'Milk'],
-          bakeTime: '35 minutes'
-        }
-      ]
-    },
-    {
-      id: 'specialty',
-      name: 'Specialty Bakes',
-      items: [
+          name: 'Chocolate Chip Cookies',
+          price: 'Rs.200',
+          image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          rating: 5,
+          description: 'Crispy cookies loaded with chocolate chips',
+          ingredients: ['Chocolate chips', 'Butter', 'Brown sugar', 'Eggs', 'Flour', 'Vanilla extract'],
+          bakeTime: '12 minutes'
+        },
         {
           id: 103,
-          name: 'Red Velvet Supreme',
-          price: 'Rs.750',
-          image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-          rating: 5,
-          description: 'Classic red velvet with cream cheese frosting',
-          ingredients: ['Red food coloring', 'Cocoa powder', 'Buttermilk', 'Cream cheese', 'Flour', 'Sugar'],
-          bakeTime: '40 minutes'
+          name: 'Simple Sponge Cake',
+          price: 'Rs.400',
+          image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          rating: 4,
+          description: 'Light and airy sponge cake perfect for any occasion',
+          ingredients: ['Eggs', 'Sugar', 'Flour', 'Butter', 'Vanilla extract', 'Baking powder'],
+          bakeTime: '25 minutes'
         }
       ]
     }
