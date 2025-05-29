@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Star, ShoppingCart, Clock, Utensils } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
+import { ScrollArea } from './ui/scroll-area';
 
 const CakeBakeSection = () => {
   const [activeCategory, setActiveCategory] = useState('treats');
@@ -77,27 +78,25 @@ const CakeBakeSection = () => {
 
   const handleItemClick = (item: any) => {
     setSelectedItem(item);
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+    // Re-enable background scrolling
+    document.body.style.overflow = 'unset';
   };
 
   const handleAddToCart = (item: any) => {
-    // Add the main item to cart
+    // Add the main item with ingredients to cart
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       image: item.image,
-      quantity: 1
-    });
-
-    // Add ingredients to cart as well
-    item.ingredients.forEach((ingredient: any, index: number) => {
-      addToCart({
-        id: item.id * 1000 + index, // Unique ID for ingredients
-        name: `${ingredient.name} (${ingredient.amount}) - for ${item.name}`,
-        price: 'Rs.0', // Ingredients are free with the item
-        image: item.image,
-        quantity: 1
-      });
+      quantity: 1,
+      ingredients: item.ingredients
     });
   };
 
@@ -170,12 +169,12 @@ const CakeBakeSection = () => {
         {/* Item Details Modal */}
         {selectedItem && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden">
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-2xl font-bold text-gray-900">{selectedItem.name}</h3>
                   <button
-                    onClick={() => setSelectedItem(null)}
+                    onClick={closeModal}
                     className="text-gray-500 hover:text-gray-700 text-2xl"
                   >
                     ×
@@ -190,37 +189,39 @@ const CakeBakeSection = () => {
                 
                 <p className="text-gray-600 mb-6">{selectedItem.description}</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <div className="flex items-center space-x-2 mb-4">
-                      <Utensils className="text-orange-500" size={20} />
-                      <h4 className="text-lg font-semibold">Ingredients</h4>
+                <ScrollArea className="h-64">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <div className="flex items-center space-x-2 mb-4">
+                        <Utensils className="text-orange-500" size={20} />
+                        <h4 className="text-lg font-semibold">Ingredients</h4>
+                      </div>
+                      <ul className="space-y-2">
+                        {selectedItem.ingredients.map((ingredient: any, index: number) => (
+                          <li key={index} className="text-gray-600 flex justify-between">
+                            <span>• {ingredient.name}</span>
+                            <span className="font-medium">{ingredient.amount}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-2">
-                      {selectedItem.ingredients.map((ingredient: any, index: number) => (
-                        <li key={index} className="text-gray-600 flex justify-between">
-                          <span>• {ingredient.name}</span>
-                          <span className="font-medium">{ingredient.amount}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <div className="flex items-center space-x-2 mb-4">
-                      <Clock className="text-orange-500" size={20} />
-                      <h4 className="text-lg font-semibold">Baking Time</h4>
+                    
+                    <div>
+                      <div className="flex items-center space-x-2 mb-4">
+                        <Clock className="text-orange-500" size={20} />
+                        <h4 className="text-lg font-semibold">Baking Time</h4>
+                      </div>
+                      <p className="text-gray-600 text-xl font-medium">{selectedItem.bakeTime}</p>
                     </div>
-                    <p className="text-gray-600 text-xl font-medium">{selectedItem.bakeTime}</p>
                   </div>
-                </div>
+                </ScrollArea>
                 
                 <div className="mt-8 flex items-center justify-between">
                   <span className="text-2xl font-bold text-orange-500">{selectedItem.price}</span>
                   <button
                     onClick={() => {
                       handleAddToCart(selectedItem);
-                      setSelectedItem(null);
+                      closeModal();
                     }}
                     className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2"
                   >

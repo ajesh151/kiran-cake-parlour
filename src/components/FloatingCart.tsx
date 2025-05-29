@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ShoppingCart, X, Plus, Minus } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
+import { ScrollArea } from './ui/scroll-area';
 import PaymentSection from './PaymentSection';
 
 const FloatingCart = () => {
@@ -43,42 +44,61 @@ const FloatingCart = () => {
               </SheetTitle>
             </SheetHeader>
             
-            <div className="mt-6 space-y-4">
-              {items.map((item) => (
-                <div key={item.id} className="flex items-center space-x-4 bg-gray-50 p-4 rounded-lg">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-16 h-16 object-cover rounded-lg"
-                  />
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900">{item.name}</h4>
-                    <p className="text-orange-500 font-bold">{item.price}</p>
-                    <div className="flex items-center space-x-2 mt-2">
+            <ScrollArea className="h-[calc(100vh-200px)] mt-6">
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <div key={item.id} className="bg-gray-50 p-4 rounded-lg">
+                    <div className="flex items-center space-x-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded-lg"
+                      />
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900">{item.name}</h4>
+                        <p className="text-orange-500 font-bold">{item.price}</p>
+                        <div className="flex items-center space-x-2 mt-2">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="bg-gray-200 hover:bg-gray-300 rounded-full p-1"
+                          >
+                            <Minus size={16} />
+                          </button>
+                          <span className="font-semibold">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="bg-gray-200 hover:bg-gray-300 rounded-full p-1"
+                          >
+                            <Plus size={16} />
+                          </button>
+                        </div>
+                      </div>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="bg-gray-200 hover:bg-gray-300 rounded-full p-1"
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-red-500 hover:text-red-700"
                       >
-                        <Minus size={16} />
-                      </button>
-                      <span className="font-semibold">{item.quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="bg-gray-200 hover:bg-gray-300 rounded-full p-1"
-                      >
-                        <Plus size={16} />
+                        <X size={20} />
                       </button>
                     </div>
+                    
+                    {/* Show ingredients if available */}
+                    {item.ingredients && item.ingredients.length > 0 && (
+                      <div className="mt-4 pt-3 border-t border-gray-200">
+                        <h5 className="text-sm font-medium text-gray-700 mb-2">Ingredients:</h5>
+                        <ul className="text-xs text-gray-600 space-y-1">
+                          {item.ingredients.map((ingredient, index) => (
+                            <li key={index} className="flex justify-between">
+                              <span>• {ingredient.name}</span>
+                              <span className="font-medium">{ingredient.amount}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </ScrollArea>
             
             {items.length > 0 && (
               <div className="mt-6 border-t pt-6">

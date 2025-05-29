@@ -1,12 +1,18 @@
 
 import { useState, createContext, useContext } from 'react';
 
+export interface CartIngredient {
+  name: string;
+  amount: string;
+}
+
 export interface CartItem {
   id: number;
   name: string;
   price: string;
   image: string;
   quantity: number;
+  ingredients?: CartIngredient[];
 }
 
 interface CartContextType {
