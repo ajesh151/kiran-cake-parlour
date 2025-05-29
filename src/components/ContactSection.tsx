@@ -51,6 +51,37 @@ const ContactSection = () => {
                 </div>
               </div>
 
+              {/* Enhanced Social Media Links */}
+              <div className="bg-gradient-to-r from-orange-50 to-pink-50 p-6 rounded-lg border border-orange-100">
+                <h4 className="font-semibold text-gray-900 mb-4 text-center">Follow Us on Social Media</h4>
+                <div className="flex justify-center space-x-6">
+                  <a 
+                    href="https://facebook.com/kirancakeparlour" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center space-y-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    <div className="bg-blue-600 p-3 rounded-full group-hover:bg-blue-700 transition-colors">
+                      <Facebook size={24} className="text-white" />
+                    </div>
+                    <span className="text-blue-600 font-medium group-hover:text-blue-700">Facebook</span>
+                  </a>
+                  <a 
+                    href="https://www.instagram.com/kirancakeparlourbrt/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center space-y-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-3 rounded-full group-hover:from-purple-700 group-hover:to-pink-700 transition-all">
+                      <Instagram size={24} className="text-white" />
+                    </div>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-medium">Instagram</span>
+                  </a>
+                </div>
+                <p className="text-center text-gray-600 text-sm mt-4">Stay updated with our latest creations and offers!</p>
+              </div>
+            </div>
+          </div>
           
           {/* Contact Form */}
           <div className="bg-gray-50 p-8 rounded-lg">
@@ -100,37 +131,6 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-              {/* Enhanced Social Media Links */}
-              <div className="bg-gradient-to-r from-orange-50 to-pink-50 p-6 rounded-lg border border-orange-100">
-                <h4 className="font-semibold text-gray-900 mb-4 text-center">Follow Us on Social Media</h4>
-                <div className="flex justify-center space-x-6">
-                  <a 
-                    href="https://facebook.com/kirancakeparlour" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group flex flex-col items-center space-y-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    <div className="bg-blue-600 p-3 rounded-full group-hover:bg-blue-700 transition-colors">
-                      <Facebook size={24} className="text-white" />
-                    </div>
-                    <span className="text-blue-600 font-medium group-hover:text-blue-700">Facebook</span>
-                  </a>
-                  <a 
-                    href="https://www.instagram.com/kirancakeparlourbrt/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group flex flex-col items-center space-y-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-3 rounded-full group-hover:from-purple-700 group-hover:to-pink-700 transition-all">
-                      <Instagram size={24} className="text-white" />
-                    </div>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-medium">Instagram</span>
-                  </a>
-                </div>
-                <p className="text-center text-gray-600 text-sm mt-4">Stay updated with our latest creations and offers!</p>
-              </div>
-            </div>
-          </div>
     </section>
   );
 };
