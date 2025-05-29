@@ -17,30 +17,56 @@ const CakeBakeSection = () => {
           id: 101,
           name: 'Classic Vanilla Cupcakes',
           price: 'Rs.250',
-          image: 'https://images.unsplash.com/photo-1587668178277-295251f900ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: '/lovable-uploads/31bfe9da-93c8-4217-89ad-2e9b4e8a2cf6.png',
           rating: 5,
           description: 'Fluffy vanilla cupcakes with buttercream frosting',
-          ingredients: ['Vanilla extract', 'Butter', 'Eggs', 'Sugar', 'Flour', 'Milk', 'Baking powder'],
+          ingredients: [
+            { name: 'Vanilla extract', amount: '2 tsp' },
+            { name: 'Butter', amount: '1/2 cup' },
+            { name: 'Eggs', amount: '2 large' },
+            { name: 'Sugar', amount: '3/4 cup' },
+            { name: 'All-purpose flour', amount: '1 1/2 cups' },
+            { name: 'Milk', amount: '1/2 cup' },
+            { name: 'Baking powder', amount: '1 1/2 tsp' }
+          ],
           bakeTime: '20 minutes'
         },
         {
           id: 102,
           name: 'Chocolate Chip Cookies',
           price: 'Rs.200',
-          image: 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: '/lovable-uploads/36edfcd3-af00-4887-8347-e224a02ca975.png',
           rating: 5,
           description: 'Crispy cookies loaded with chocolate chips',
-          ingredients: ['Chocolate chips', 'Butter', 'Brown sugar', 'Eggs', 'Flour', 'Vanilla extract'],
+          ingredients: [
+            { name: 'Chocolate chips', amount: '1 cup' },
+            { name: 'Butter', amount: '1/2 cup' },
+            { name: 'Brown sugar', amount: '3/4 cup' },
+            { name: 'White sugar', amount: '1/4 cup' },
+            { name: 'Eggs', amount: '1 large' },
+            { name: 'All-purpose flour', amount: '2 1/4 cups' },
+            { name: 'Vanilla extract', amount: '1 tsp' },
+            { name: 'Baking soda', amount: '1 tsp' },
+            { name: 'Salt', amount: '1/2 tsp' }
+          ],
           bakeTime: '12 minutes'
         },
         {
           id: 103,
           name: 'Simple Sponge Cake',
           price: 'Rs.400',
-          image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: '/lovable-uploads/c584ae10-dbed-470e-971e-15c0d94eb387.png',
           rating: 4,
           description: 'Light and airy sponge cake perfect for any occasion',
-          ingredients: ['Eggs', 'Sugar', 'Flour', 'Butter', 'Vanilla extract', 'Baking powder'],
+          ingredients: [
+            { name: 'Eggs', amount: '6 large' },
+            { name: 'Caster sugar', amount: '150g' },
+            { name: 'Self-raising flour', amount: '150g' },
+            { name: 'Butter', amount: '3 tbsp' },
+            { name: 'Vanilla extract', amount: '1 tsp' },
+            { name: 'Cocoa powder', amount: '2 tbsp' },
+            { name: 'Heavy cream', amount: '200ml' }
+          ],
           bakeTime: '25 minutes'
         }
       ]
@@ -54,12 +80,24 @@ const CakeBakeSection = () => {
   };
 
   const handleAddToCart = (item: any) => {
+    // Add the main item to cart
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       image: item.image,
       quantity: 1
+    });
+
+    // Add ingredients to cart as well
+    item.ingredients.forEach((ingredient: any, index: number) => {
+      addToCart({
+        id: item.id * 1000 + index, // Unique ID for ingredients
+        name: `${ingredient.name} (${ingredient.amount}) - for ${item.name}`,
+        price: 'Rs.0', // Ingredients are free with the item
+        image: item.image,
+        quantity: 1
+      });
     });
   };
 
@@ -159,8 +197,11 @@ const CakeBakeSection = () => {
                       <h4 className="text-lg font-semibold">Ingredients</h4>
                     </div>
                     <ul className="space-y-2">
-                      {selectedItem.ingredients.map((ingredient: string, index: number) => (
-                        <li key={index} className="text-gray-600">• {ingredient}</li>
+                      {selectedItem.ingredients.map((ingredient: any, index: number) => (
+                        <li key={index} className="text-gray-600 flex justify-between">
+                          <span>• {ingredient.name}</span>
+                          <span className="font-medium">{ingredient.amount}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>

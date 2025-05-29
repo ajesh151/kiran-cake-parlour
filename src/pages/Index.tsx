@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
@@ -28,7 +29,14 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <h3 className="text-2xl font-bold text-orange-400 mb-4">KIRAN CAKE PARLOUR</h3>
-                <p className="text-gray-300">Crafting the finest cakes in Biratnagar with love, passion, and the finest ingredients.</p>
+                <div className="text-gray-300">
+                  <h4 className="font-semibold mb-2">Our Outlets:</h4>
+                  <ul className="space-y-1">
+                    <li>• Traffic Chowk, Biratnagar (Main Branch)</li>
+                    <li>• Mahendra Chowk, Biratnagar</li>
+                    <li>• Rangeli Road, Biratnagar</li>
+                  </ul>
+                </div>
               </div>
               
               <div>
