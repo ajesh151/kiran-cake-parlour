@@ -24,7 +24,6 @@ const CakeBakeSection = () => {
           ingredients: [
             { name: 'Vanilla extract', amount: '2 tsp' },
             { name: 'Butter', amount: '1/2 cup' },
-            { name: 'Eggs', amount: '2 large' },
             { name: 'Sugar', amount: '3/4 cup' },
             { name: 'All-purpose flour', amount: '1 1/2 cups' },
             { name: 'Milk', amount: '1/2 cup' },
@@ -44,7 +43,6 @@ const CakeBakeSection = () => {
             { name: 'Butter', amount: '1/2 cup' },
             { name: 'Brown sugar', amount: '3/4 cup' },
             { name: 'White sugar', amount: '1/4 cup' },
-            { name: 'Eggs', amount: '1 large' },
             { name: 'All-purpose flour', amount: '2 1/4 cups' },
             { name: 'Vanilla extract', amount: '1 tsp' },
             { name: 'Baking soda', amount: '1 tsp' },
@@ -60,7 +58,6 @@ const CakeBakeSection = () => {
           rating: 4,
           description: 'Light and airy sponge cake perfect for any occasion',
           ingredients: [
-            { name: 'Eggs', amount: '6 large' },
             { name: 'Caster sugar', amount: '150g' },
             { name: 'Self-raising flour', amount: '150g' },
             { name: 'Butter', amount: '3 tbsp' },
