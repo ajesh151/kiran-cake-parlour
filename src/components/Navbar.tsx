@@ -9,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'menu', 'wallet', 'contact'];
+      const sections = ['home', 'about', 'menu', 'cake-bake', 'wallet', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -40,6 +40,7 @@ const Navbar = () => {
     { id: 'home', label: 'HOME' },
     { id: 'about', label: 'ABOUT US' },
     { id: 'menu', label: 'MENU & PRICING' },
+    { id: 'cake-bake', label: 'CAKE BAKE' },
     { id: 'wallet', label: 'KIRAN WALLET' },
     { id: 'contact', label: 'CONTACT US' }
   ];

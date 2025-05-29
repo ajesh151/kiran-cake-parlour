@@ -1,10 +1,12 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
+
 const ContactSection = () => {
-  return <section id="contact" className="py-20 bg-white">
+  return (
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
             CONTACT US
           </h2>
@@ -20,7 +22,7 @@ const ContactSection = () => {
                 <MapPin className="text-orange-500 mt-1" size={24} />
                 <div>
                   <h4 className="font-semibold text-gray-900">Address</h4>
-                  <p className="text-gray-600"> Traffic Chowk, Biratnagar</p>
+                  <p className="text-gray-600">Traffic Chowk, Biratnagar</p>
                 </div>
               </div>
               
@@ -45,7 +47,36 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900">Opening Hours</h4>
                   <p className="text-gray-600">Sun - Sat: 8:00 AM - 9:00 PM</p>
-                  
+                </div>
+              </div>
+
+              {/* Social Media Links */}
+              <div className="flex items-start space-x-4">
+                <div className="text-orange-500 mt-1">
+                  <Facebook size={24} />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">Follow Us</h4>
+                  <div className="flex space-x-4 mt-2">
+                    <a 
+                      href="https://facebook.com/kirancakeparlour" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
+                      <Facebook size={20} />
+                      <span>Facebook</span>
+                    </a>
+                    <a 
+                      href="https://instagram.com/kirancakeparlour" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-pink-600 hover:text-pink-800 transition-colors"
+                    >
+                      <Instagram size={20} />
+                      <span>Instagram</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -99,6 +130,8 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ContactSection;

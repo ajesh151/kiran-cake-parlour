@@ -3,17 +3,21 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import MenuSection from '../components/MenuSection';
+import CakeBakeSection from '../components/CakeBakeSection';
 import KiranWalletSection from '../components/KiranWalletSection';
 import ContactSection from '../components/ContactSection';
 import CartProvider from '../components/CartProvider';
 import FloatingCart from '../components/FloatingCart';
+
 const Index = () => {
-  return <CartProvider>
+  return (
+    <CartProvider>
       <div className="min-h-screen">
         <Navbar />
         <HeroSection />
         <AboutSection />
         <MenuSection />
+        <CakeBakeSection />
         <KiranWalletSection />
         <ContactSection />
         <FloatingCart />
@@ -33,6 +37,7 @@ const Index = () => {
                   <li><a href="#home" className="hover:text-orange-400 transition-colors">Home</a></li>
                   <li><a href="#about" className="hover:text-orange-400 transition-colors">About</a></li>
                   <li><a href="#menu" className="hover:text-orange-400 transition-colors">Menu</a></li>
+                  <li><a href="#cake-bake" className="hover:text-orange-400 transition-colors">Cake Bake</a></li>
                   <li><a href="#wallet" className="hover:text-orange-400 transition-colors">Kiran Wallet</a></li>
                 </ul>
               </div>
@@ -41,7 +46,7 @@ const Index = () => {
                 <h4 className="text-lg font-semibold mb-4">Contact</h4>
                 <ul className="space-y-2 text-gray-300">
                   <li>Traffic Chowk, Biratnagar</li>
-                  <li> 021-535768</li>
+                  <li>021-535768</li>
                   <li>info@kirancakeparlour.com</li>
                 </ul>
               </div>
@@ -50,7 +55,6 @@ const Index = () => {
                 <h4 className="text-lg font-semibold mb-4">Opening Hours</h4>
                 <ul className="space-y-2 text-gray-300">
                   <li>Sun - Sat: 8:00 AM - 9:00 PM</li>
-                  
                 </ul>
               </div>
             </div>
@@ -61,6 +65,8 @@ const Index = () => {
           </div>
         </footer>
       </div>
-    </CartProvider>;
+    </CartProvider>
+  );
 };
+
 export default Index;

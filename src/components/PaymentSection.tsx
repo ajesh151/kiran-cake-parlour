@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { CreditCard, Lock, ArrowLeft } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
+import OrderTracking from './OrderTracking';
 
 interface PaymentSectionProps {
   onBack: () => void;
@@ -8,6 +10,8 @@ interface PaymentSectionProps {
 
 const PaymentSection = ({ onBack }: PaymentSectionProps) => {
   const { items, clearCart } = useCart();
+  const [showTracking, setShowTracking] = useState(false);
+  const [orderNumber, setOrderNumber] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -35,16 +39,34 @@ const PaymentSection = ({ onBack }: PaymentSectionProps) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically process the payment
-    alert('Payment processed successfully!');
-    clearCart();
-    onBack();
+  const generateOrderNumber = () => {
+    return 'KCP' + Math.random().toString(36).substr(2, 9).toUpperCase();
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newOrderNumber = generateOrderNumber();
+    setOrderNumber(newOrderNumber);
+    clearCart();
+    setShowTracking(true);
+  };
+
+  if (showTracking) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
+        <OrderTracking 
+          orderNumber={orderNumber} 
+          onClose={() => {
+            setShowTracking(false);
+            onBack();
+          }} 
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="bg-gray-50 py-8 h-full">
       <div className="container mx-auto px-4 max-w-4xl">
         <button
           onClick={onBack}

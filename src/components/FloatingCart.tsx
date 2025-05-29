@@ -16,7 +16,6 @@ const FloatingCart = () => {
     }, 0);
   };
 
-
   return (
     <>
       <div className="fixed bottom-6 right-6 z-50">
@@ -101,10 +100,8 @@ const FloatingCart = () => {
 
       {/* Payment Overlay */}
       {showPayment && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <PaymentSection onBack={() => setShowPayment(false)} />
-          </div>
+        <div className="fixed inset-0 bg-white z-[100] overflow-hidden">
+          <PaymentSection onBack={() => setShowPayment(false)} />
         </div>
       )}
     </>
