@@ -68,7 +68,7 @@ const ContactSection = () => {
                       <span>Facebook</span>
                     </a>
                     <a 
-                      href="https://instagram.com/kirancakeparlour" 
+                      href="https://www.instagram.com/kirancakeparlourbrt/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 text-pink-600 hover:text-pink-800 transition-colors"
