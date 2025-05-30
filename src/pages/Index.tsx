@@ -1,3 +1,4 @@
+
 import React from 'react';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
@@ -7,11 +8,15 @@ import KiranWalletSection from '../components/KiranWalletSection';
 import ContactSection from '../components/ContactSection';
 import CartProvider from '../components/CartProvider';
 import FloatingCart from '../components/FloatingCart';
+import Navbar from '../components/Navbar';
 
 const Index = () => {
+  console.log('Index page rendering');
+  
   return (
     <CartProvider>
       <div className="min-h-screen">
+        <Navbar />
         <HeroSection />
         <AboutSection />
         <MenuSection />
