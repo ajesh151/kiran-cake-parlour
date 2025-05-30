@@ -245,16 +245,16 @@ const CakeBakeSection = () => {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                         >
                           {item.id === 101 && [
-                            <option key={5} value={5}>5 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 5)}</option>,
-                            <option key={10} value={10}>10 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 10)}</option>,
-                            <option key={15} value={15}>15 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 15)}</option>,
-                            <option key={20} value={20}>20 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 20)}</option>
+                            <option key={5} value={5}>5 pieces  </option>,
+                            <option key={10} value={10}>10 pieces  </option>,
+                            <option key={15} value={15}>15 pieces  </option>,
+                            <option key={20} value={20}>20 pieces  </option>
                           ]}
                           {item.id === 102 && [
-                            <option key={10} value={10}>10 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 10)}</option>,
-                            <option key={20} value={20}>20 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 20)}</option>,
-                            <option key={30} value={30}>30 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 30)}</option>,
-                            <option key={50} value={50}>50 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 50)}</option>
+                            <option key={10} value={10}>10 pieces  </option>,
+                            <option key={20} value={20}>20 pieces  </option>,
+                            <option key={30} value={30}>30 pieces  </option>,
+                            <option key={50} value={50}>50 pieces  </option>
                           ]}
                         </select>
                       </>
@@ -268,11 +268,11 @@ const CakeBakeSection = () => {
                           onChange={(e) => setWeight(item.id, Number(e.target.value))}
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                         >
-                          <option value={1}>1 pound - Rs.{item.basePrice}</option>
-                          <option value={2}>2 pounds - Rs.{item.basePrice * 2}</option>
-                          <option value={3}>3 pounds - Rs.{item.basePrice * 3}</option>
-                          <option value={4}>4 pounds - Rs.{item.basePrice * 4}</option>
-                          <option value={5}>5 pounds - Rs.{item.basePrice * 5}</option>
+                          <option value={1}>1 pound </option>
+                          <option value={2}>2 pounds  </option>
+                          <option value={3}>3 pounds </option>
+                          <option value={4}>4 pounds  </option>
+                          <option value={5}>5 pounds  </option>
                         </select>
                       </>
                     )}
