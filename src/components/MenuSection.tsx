@@ -243,11 +243,11 @@ const MenuSection = () => {
                       onChange={(e) => setWeight(item.id, Number(e.target.value))}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                     >
-                      <option value={1}>1 pound }</option>
-                      <option value={2}>2 pounds }</option>
-                      <option value={3}>3 pounds}</option>
-                      <option value={4}>4 pounds}</option>
-                      <option value={5}>5 pounds}</option>
+                      <option value={1}>1 pound </option>
+                      <option value={2}>2 pounds </option>
+                      <option value={3}>3 pounds</option>
+                      <option value={4}>4 pounds</option>
+                      <option value={5}>5 pounds</option>
                     </select>
                   </div>
 
