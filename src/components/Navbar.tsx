@@ -1,11 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
 
 const Navbar = () => {
+  console.log('Navbar component rendering');
+  
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  console.log('Current location:', location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
