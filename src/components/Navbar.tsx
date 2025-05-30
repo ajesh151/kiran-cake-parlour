@@ -61,9 +61,9 @@ const Navbar = () => {
                 alt="Kiran Cake Parlour" 
                 className="h-12 w-auto object-contain"
               />
-              <div className="relative">
-                <div className="w-5 h-5 bg-green-500 border-2 border-green-400 rounded-sm flex items-center justify-center">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <div className="relative ml-2">
+                <div className="w-5 h-5 border-2 border-green-500 rounded-sm flex items-center justify-center bg-transparent">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 </div>
               </div>
             </div>
