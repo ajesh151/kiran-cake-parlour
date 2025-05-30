@@ -55,13 +55,17 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
               <img 
                 src="/lovable-uploads/4720b749-946d-4875-97c9-82e93591461a.png" 
                 alt="Kiran Cake Parlour" 
                 className="h-12 w-auto object-contain"
               />
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="relative">
+                <div className="w-5 h-5 bg-green-500 border-2 border-green-400 rounded-sm flex items-center justify-center">
+                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                </div>
+              </div>
             </div>
           </div>
           

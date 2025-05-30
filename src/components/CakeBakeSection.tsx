@@ -17,7 +17,7 @@ const CakeBakeSection = () => {
     items: [{
       id: 101,
       name: 'Classic Vanilla Cupcakes',
-      price: 'Rs.250',
+      basePrice: 250,
       image: '/lovable-uploads/31bfe9da-93c8-4217-89ad-2e9b4e8a2cf6.png',
       rating: 5,
       description: 'Fluffy vanilla cupcakes with buttercream frosting',
@@ -46,7 +46,7 @@ const CakeBakeSection = () => {
     }, {
       id: 102,
       name: 'Chocolate Chip Cookies',
-      price: 'Rs.200',
+      basePrice: 200,
       image: '/lovable-uploads/36edfcd3-af00-4887-8347-e224a02ca975.png',
       rating: 5,
       description: 'Crispy cookies loaded with chocolate chips',
@@ -81,7 +81,7 @@ const CakeBakeSection = () => {
     }, {
       id: 103,
       name: 'Simple Sponge Cake',
-      price: 'Rs.400',
+      basePrice: 400,
       image: '/lovable-uploads/c584ae10-dbed-470e-971e-15c0d94eb387.png',
       rating: 4,
       description: 'Light and airy sponge cake perfect for any occasion',
@@ -122,6 +122,17 @@ const CakeBakeSection = () => {
     setSelectedAmounts(prev => ({ ...prev, [itemId]: amount }));
   };
 
+  const calculatePrice = (item: any) => {
+    if (item.hasAmount) {
+      const amount = getAmount(item.id, item.defaultAmount);
+      const pricePerPiece = item.basePrice / item.defaultAmount;
+      return Math.round(pricePerPiece * amount);
+    } else {
+      const weight = getWeight(item.id);
+      return item.basePrice * weight;
+    }
+  };
+
   const handleItemClick = (item: any) => {
     setSelectedItem(item);
     document.body.style.overflow = 'hidden';
@@ -133,12 +144,14 @@ const CakeBakeSection = () => {
   };
 
   const handleAddToCart = (item: any) => {
+    const finalPrice = calculatePrice(item);
+    
     if (item.hasAmount) {
       const amount = getAmount(item.id, item.defaultAmount);
       addToCart({
         id: item.id,
         name: item.name,
-        price: item.price,
+        price: `Rs.${finalPrice}`,
         image: item.image,
         quantity: amount,
         ingredients: item.ingredients
@@ -149,7 +162,7 @@ const CakeBakeSection = () => {
       addToCart({
         id: item.id,
         name: item.name,
-        price: item.price,
+        price: `Rs.${finalPrice}`,
         image: item.image,
         quantity: 1,
         weight,
@@ -186,92 +199,96 @@ const CakeBakeSection = () => {
         
         {/* Menu Items */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentCategory?.items.map(item => (
-            <div key={item.id} className="bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="relative h-64 cursor-pointer" onClick={() => handleItemClick(item)}>
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-bold">
-                  {item.price}
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">{item.name}</h4>
-                <p className="text-gray-600 mb-4">{item.description}</p>
-                
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className={i < item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
-                      />
-                    ))}
+          {currentCategory?.items.map(item => {
+            const finalPrice = calculatePrice(item);
+            
+            return (
+              <div key={item.id} className="bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="relative h-64 cursor-pointer" onClick={() => handleItemClick(item)}>
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-bold">
+                    Rs.{finalPrice}
                   </div>
                 </div>
-
-                {/* Amount/Weight Selection */}
-                <div className="mb-4">
-                  {item.hasAmount ? (
-                    <>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Amount (pieces)
-                      </label>
-                      <select
-                        value={getAmount(item.id, item.defaultAmount)}
-                        onChange={(e) => setAmount(item.id, Number(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      >
-                        {item.id === 101 && [
-                          <option key={5} value={5}>5 pieces</option>,
-                          <option key={10} value={10}>10 pieces</option>,
-                          <option key={15} value={15}>15 pieces</option>,
-                          <option key={20} value={20}>20 pieces</option>
-                        ]}
-                        {item.id === 102 && [
-                          <option key={10} value={10}>10 pieces</option>,
-                          <option key={20} value={20}>20 pieces</option>,
-                          <option key={30} value={30}>30 pieces</option>,
-                          <option key={50} value={50}>50 pieces</option>
-                        ]}
-                      </select>
-                    </>
-                  ) : (
-                    <>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Weight (pounds)
-                      </label>
-                      <select
-                        value={getWeight(item.id)}
-                        onChange={(e) => setWeight(item.id, Number(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                      >
-                        <option value={1}>1 pound</option>
-                        <option value={2}>2 pounds</option>
-                        <option value={3}>3 pounds</option>
-                        <option value={4}>4 pounds</option>
-                        <option value={5}>5 pounds</option>
-                      </select>
-                    </>
-                  )}
-                </div>
                 
-                <button
-                  onClick={() => handleAddToCart(item)}
-                  className="w-full bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <ShoppingCart size={16} />
-                  <span>Order</span>
-                </button>
+                <div className="p-6">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">{item.name}</h4>
+                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          size={16}
+                          className={i < item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Amount/Weight Selection */}
+                  <div className="mb-4">
+                    {item.hasAmount ? (
+                      <>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Amount (pieces)
+                        </label>
+                        <select
+                          value={getAmount(item.id, item.defaultAmount)}
+                          onChange={(e) => setAmount(item.id, Number(e.target.value))}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          {item.id === 101 && [
+                            <option key={5} value={5}>5 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 5)}</option>,
+                            <option key={10} value={10}>10 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 10)}</option>,
+                            <option key={15} value={15}>15 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 15)}</option>,
+                            <option key={20} value={20}>20 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 20)}</option>
+                          ]}
+                          {item.id === 102 && [
+                            <option key={10} value={10}>10 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 10)}</option>,
+                            <option key={20} value={20}>20 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 20)}</option>,
+                            <option key={30} value={30}>30 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 30)}</option>,
+                            <option key={50} value={50}>50 pieces - Rs.{Math.round((item.basePrice / item.defaultAmount) * 50)}</option>
+                          ]}
+                        </select>
+                      </>
+                    ) : (
+                      <>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Weight (pounds)
+                        </label>
+                        <select
+                          value={getWeight(item.id)}
+                          onChange={(e) => setWeight(item.id, Number(e.target.value))}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value={1}>1 pound - Rs.{item.basePrice}</option>
+                          <option value={2}>2 pounds - Rs.{item.basePrice * 2}</option>
+                          <option value={3}>3 pounds - Rs.{item.basePrice * 3}</option>
+                          <option value={4}>4 pounds - Rs.{item.basePrice * 4}</option>
+                          <option value={5}>5 pounds - Rs.{item.basePrice * 5}</option>
+                        </select>
+                      </>
+                    )}
+                  </div>
+                  
+                  <button
+                    onClick={() => handleAddToCart(item)}
+                    className="w-full bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2"
+                  >
+                    <ShoppingCart size={16} />
+                    <span>Order</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Item Details Modal */}
@@ -337,16 +354,16 @@ const CakeBakeSection = () => {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                         >
                           {selectedItem.id === 101 && [
-                            <option key={5} value={5}>5 pieces</option>,
-                            <option key={10} value={10}>10 pieces</option>,
-                            <option key={15} value={15}>15 pieces</option>,
-                            <option key={20} value={20}>20 pieces</option>
+                            <option key={5} value={5}>5 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 5)}</option>,
+                            <option key={10} value={10}>10 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 10)}</option>,
+                            <option key={15} value={15}>15 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 15)}</option>,
+                            <option key={20} value={20}>20 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 20)}</option>
                           ]}
                           {selectedItem.id === 102 && [
-                            <option key={10} value={10}>10 pieces</option>,
-                            <option key={20} value={20}>20 pieces</option>,
-                            <option key={30} value={30}>30 pieces</option>,
-                            <option key={50} value={50}>50 pieces</option>
+                            <option key={10} value={10}>10 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 10)}</option>,
+                            <option key={20} value={20}>20 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 20)}</option>,
+                            <option key={30} value={30}>30 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 30)}</option>,
+                            <option key={50} value={50}>50 pieces - Rs.{Math.round((selectedItem.basePrice / selectedItem.defaultAmount) * 50)}</option>
                           ]}
                         </select>
                       </>
@@ -360,18 +377,18 @@ const CakeBakeSection = () => {
                           onChange={(e) => setWeight(selectedItem.id, Number(e.target.value))}
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                         >
-                          <option value={1}>1 pound</option>
-                          <option value={2}>2 pounds</option>
-                          <option value={3}>3 pounds</option>
-                          <option value={4}>4 pounds</option>
-                          <option value={5}>5 pounds</option>
+                          <option value={1}>1 pound - Rs.{selectedItem.basePrice}</option>
+                          <option value={2}>2 pounds - Rs.{selectedItem.basePrice * 2}</option>
+                          <option value={3}>3 pounds - Rs.{selectedItem.basePrice * 3}</option>
+                          <option value={4}>4 pounds - Rs.{selectedItem.basePrice * 4}</option>
+                          <option value={5}>5 pounds - Rs.{selectedItem.basePrice * 5}</option>
                         </select>
                       </>
                     )}
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-orange-500">{selectedItem.price}</span>
+                    <span className="text-2xl font-bold text-orange-500">Rs.{calculatePrice(selectedItem)}</span>
                     <button
                       onClick={() => {
                         handleAddToCart(selectedItem);
