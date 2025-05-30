@@ -1,9 +1,13 @@
+
 import React, { useState } from 'react';
 import { Star, ShoppingCart } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
+import { Textarea } from './ui/textarea';
 
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState('birthday');
+  const [selectedWeights, setSelectedWeights] = useState<{[key: number]: number}>({});
+  const [customMessages, setCustomMessages] = useState<{[key: number]: string}>({});
   const { addToCart } = useCart();
 
   const menuCategories = [
@@ -73,27 +77,27 @@ const MenuSection = () => {
       items: [
         {
           id: 7,
-          name: 'Custom Theme Cake',
-          price: 'Rs.600',
-          image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          name: 'FC Barcelona Theme Cake',
+          price: 'Rs.800',
+          image: '/lovable-uploads/f30e1b4b-9972-4d72-a499-5fdb312acb8d.png',
           rating: 5,
-          description: 'Personalized cake designed to your specifications'
+          description: 'Custom FC Barcelona themed cake with team colors and logo'
         },
         {
           id: 8,
-          name: 'Corporate Event Cake',
-          price: 'Rs.700',
-          image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-          rating: 4,
-          description: 'Professional cakes for corporate events and celebrations'
+          name: 'One Piece Anime Cake',
+          price: 'Rs.900',
+          image: '/lovable-uploads/d068ea10-7952-46c0-8cb6-79e469d55c08.png',
+          rating: 5,
+          description: 'One Piece themed cake with character elements and ship design'
         },
         {
           id: 9,
-          name: 'Character Design Cake',
-          price: 'Rs.550',
-          image: 'https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          name: 'Superhero Theme Cake',
+          price: 'Rs.850',
+          image: '/lovable-uploads/f6756404-dee6-4c53-8b40-18528786a8d2.png',
           rating: 5,
-          description: 'Fun character-themed cakes for special occasions'
+          description: 'Marvel and DC superhero themed cake with multiple character designs'
         }
       ]
     },
@@ -131,14 +135,34 @@ const MenuSection = () => {
 
   const currentCategory = menuCategories.find(cat => cat.id === activeCategory);
 
+  const getWeight = (itemId: number) => selectedWeights[itemId] || 1;
+  const getMessage = (itemId: number) => customMessages[itemId] || '';
+
+  const setWeight = (itemId: number, weight: number) => {
+    setSelectedWeights(prev => ({ ...prev, [itemId]: weight }));
+  };
+
+  const setMessage = (itemId: number, message: string) => {
+    setCustomMessages(prev => ({ ...prev, [itemId]: message }));
+  };
+
   const handleAddToCart = (item: any) => {
+    const weight = getWeight(item.id);
+    const message = getMessage(item.id);
+    
     addToCart({
       id: item.id,
       name: item.name,
       price: item.price,
       image: item.image,
-      quantity: 1
+      quantity: 1,
+      weight,
+      customMessage: message || undefined
     });
+
+    // Reset form
+    setWeight(item.id, 1);
+    setMessage(item.id, '');
   };
 
   return (
@@ -183,7 +207,7 @@ const MenuSection = () => {
                 <h4 className="text-xl font-bold text-gray-900 mb-2">{item.name}</h4>
                 <p className="text-gray-600 mb-4">{item.description}</p>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -193,15 +217,49 @@ const MenuSection = () => {
                       />
                     ))}
                   </div>
-                  
-                  <button
-                    onClick={() => handleAddToCart(item)}
-                    className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2"
-                  >
-                    <ShoppingCart size={16} />
-                    <span>Order</span>
-                  </button>
                 </div>
+
+                {/* Weight Selection */}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Weight (pounds)
+                  </label>
+                  <select
+                    value={getWeight(item.id)}
+                    onChange={(e) => setWeight(item.id, Number(e.target.value))}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >
+                    <option value={1}>1 pound</option>
+                    <option value={2}>2 pounds</option>
+                    <option value={3}>3 pounds</option>
+                    <option value={4}>4 pounds</option>
+                    <option value={5}>5 pounds</option>
+                  </select>
+                </div>
+
+                {/* Custom Message for Custom Cakes */}
+                {activeCategory === 'custom' && (
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Custom Message (Optional)
+                    </label>
+                    <Textarea
+                      value={getMessage(item.id)}
+                      onChange={(e) => setMessage(item.id, e.target.value)}
+                      placeholder="Enter your custom message here..."
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      rows={3}
+                    />
+                  </div>
+                )}
+                
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className="w-full bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center space-x-2"
+                >
+                  <ShoppingCart size={16} />
+                  <span>Add to Cart</span>
+                </button>
               </div>
             </div>
           ))}

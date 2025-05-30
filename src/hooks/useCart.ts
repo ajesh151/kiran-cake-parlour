@@ -12,6 +12,8 @@ export interface CartItem {
   price: string;
   image: string;
   quantity: number;
+  weight?: number;
+  customMessage?: string;
   ingredients?: CartIngredient[];
 }
 
