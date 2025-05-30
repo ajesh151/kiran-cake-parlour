@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Star, ShoppingCart, Clock, Utensils } from 'lucide-react';
 import { useCart } from '../hooks/useCart';
@@ -6,6 +7,7 @@ import { ScrollArea } from './ui/scroll-area';
 const CakeBakeSection = () => {
   const [activeCategory, setActiveCategory] = useState('treats');
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedAmounts, setSelectedAmounts] = useState<{[key: number]: number}>({});
   const [selectedWeights, setSelectedWeights] = useState<{[key: number]: number}>({});
   const { addToCart } = useCart();
 
@@ -19,6 +21,8 @@ const CakeBakeSection = () => {
       image: '/lovable-uploads/31bfe9da-93c8-4217-89ad-2e9b4e8a2cf6.png',
       rating: 5,
       description: 'Fluffy vanilla cupcakes with buttercream frosting',
+      hasAmount: true,
+      defaultAmount: 5,
       ingredients: [{
         name: 'Vanilla extract',
         amount: '2 tsp'
@@ -46,6 +50,8 @@ const CakeBakeSection = () => {
       image: '/lovable-uploads/36edfcd3-af00-4887-8347-e224a02ca975.png',
       rating: 5,
       description: 'Crispy cookies loaded with chocolate chips',
+      hasAmount: true,
+      defaultAmount: 10,
       ingredients: [{
         name: 'Chocolate chips',
         amount: '1 cup'
@@ -79,6 +85,7 @@ const CakeBakeSection = () => {
       image: '/lovable-uploads/c584ae10-dbed-470e-971e-15c0d94eb387.png',
       rating: 4,
       description: 'Light and airy sponge cake perfect for any occasion',
+      hasAmount: false,
       ingredients: [{
         name: 'Caster sugar',
         amount: '150g'
@@ -105,8 +112,14 @@ const CakeBakeSection = () => {
   const currentCategory = bakeCategories.find(cat => cat.id === activeCategory);
 
   const getWeight = (itemId: number) => selectedWeights[itemId] || 1;
+  const getAmount = (itemId: number, defaultAmount: number) => selectedAmounts[itemId] || defaultAmount;
+
   const setWeight = (itemId: number, weight: number) => {
     setSelectedWeights(prev => ({ ...prev, [itemId]: weight }));
+  };
+
+  const setAmount = (itemId: number, amount: number) => {
+    setSelectedAmounts(prev => ({ ...prev, [itemId]: amount }));
   };
 
   const handleItemClick = (item: any) => {
@@ -120,17 +133,30 @@ const CakeBakeSection = () => {
   };
 
   const handleAddToCart = (item: any) => {
-    const weight = getWeight(item.id);
-    addToCart({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      image: item.image,
-      quantity: 1,
-      weight,
-      ingredients: item.ingredients
-    });
-    setWeight(item.id, 1); // Reset weight
+    if (item.hasAmount) {
+      const amount = getAmount(item.id, item.defaultAmount);
+      addToCart({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        quantity: amount,
+        ingredients: item.ingredients
+      });
+      setAmount(item.id, item.defaultAmount);
+    } else {
+      const weight = getWeight(item.id);
+      addToCart({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
+        quantity: 1,
+        weight,
+        ingredients: item.ingredients
+      });
+      setWeight(item.id, 1);
+    }
   };
 
   return (
@@ -163,7 +189,12 @@ const CakeBakeSection = () => {
           {currentCategory?.items.map(item => (
             <div key={item.id} className="bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="relative h-64 cursor-pointer" onClick={() => handleItemClick(item)}>
-                <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
                 <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-bold">
                   {item.price}
                 </div>
@@ -185,22 +216,50 @@ const CakeBakeSection = () => {
                   </div>
                 </div>
 
-                {/* Weight Selection */}
+                {/* Amount/Weight Selection */}
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Weight (pounds)
-                  </label>
-                  <select
-                    value={getWeight(item.id)}
-                    onChange={(e) => setWeight(item.id, Number(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >
-                    <option value={1}>1 pound</option>
-                    <option value={2}>2 pounds</option>
-                    <option value={3}>3 pounds</option>
-                    <option value={4}>4 pounds</option>
-                    <option value={5}>5 pounds</option>
-                  </select>
+                  {item.hasAmount ? (
+                    <>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Amount (pieces)
+                      </label>
+                      <select
+                        value={getAmount(item.id, item.defaultAmount)}
+                        onChange={(e) => setAmount(item.id, Number(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      >
+                        {item.id === 101 && [
+                          <option key={5} value={5}>5 pieces</option>,
+                          <option key={10} value={10}>10 pieces</option>,
+                          <option key={15} value={15}>15 pieces</option>,
+                          <option key={20} value={20}>20 pieces</option>
+                        ]}
+                        {item.id === 102 && [
+                          <option key={10} value={10}>10 pieces</option>,
+                          <option key={20} value={20}>20 pieces</option>,
+                          <option key={30} value={30}>30 pieces</option>,
+                          <option key={50} value={50}>50 pieces</option>
+                        ]}
+                      </select>
+                    </>
+                  ) : (
+                    <>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Weight (pounds)
+                      </label>
+                      <select
+                        value={getWeight(item.id)}
+                        onChange={(e) => setWeight(item.id, Number(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      >
+                        <option value={1}>1 pound</option>
+                        <option value={2}>2 pounds</option>
+                        <option value={3}>3 pounds</option>
+                        <option value={4}>4 pounds</option>
+                        <option value={5}>5 pounds</option>
+                      </select>
+                    </>
+                  )}
                 </div>
                 
                 <button
@@ -235,6 +294,7 @@ const CakeBakeSection = () => {
                     src={selectedItem.image}
                     alt={selectedItem.name}
                     className="w-full h-64 object-cover rounded-lg mb-6"
+                    loading="lazy"
                   />
                   
                   <p className="text-gray-600 mb-6">{selectedItem.description}</p>
@@ -264,22 +324,50 @@ const CakeBakeSection = () => {
                     </div>
                   </div>
 
-                  {/* Weight Selection in Modal */}
+                  {/* Amount/Weight Selection in Modal */}
                   <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Weight (pounds)
-                    </label>
-                    <select
-                      value={getWeight(selectedItem.id)}
-                      onChange={(e) => setWeight(selectedItem.id, Number(e.target.value))}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >
-                      <option value={1}>1 pound</option>
-                      <option value={2}>2 pounds</option>
-                      <option value={3}>3 pounds</option>
-                      <option value={4}>4 pounds</option>
-                      <option value={5}>5 pounds</option>
-                    </select>
+                    {selectedItem.hasAmount ? (
+                      <>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Amount (pieces)
+                        </label>
+                        <select
+                          value={getAmount(selectedItem.id, selectedItem.defaultAmount)}
+                          onChange={(e) => setAmount(selectedItem.id, Number(e.target.value))}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          {selectedItem.id === 101 && [
+                            <option key={5} value={5}>5 pieces</option>,
+                            <option key={10} value={10}>10 pieces</option>,
+                            <option key={15} value={15}>15 pieces</option>,
+                            <option key={20} value={20}>20 pieces</option>
+                          ]}
+                          {selectedItem.id === 102 && [
+                            <option key={10} value={10}>10 pieces</option>,
+                            <option key={20} value={20}>20 pieces</option>,
+                            <option key={30} value={30}>30 pieces</option>,
+                            <option key={50} value={50}>50 pieces</option>
+                          ]}
+                        </select>
+                      </>
+                    ) : (
+                      <>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Weight (pounds)
+                        </label>
+                        <select
+                          value={getWeight(selectedItem.id)}
+                          onChange={(e) => setWeight(selectedItem.id, Number(e.target.value))}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        >
+                          <option value={1}>1 pound</option>
+                          <option value={2}>2 pounds</option>
+                          <option value={3}>3 pounds</option>
+                          <option value={4}>4 pounds</option>
+                          <option value={5}>5 pounds</option>
+                        </select>
+                      </>
+                    )}
                   </div>
                   
                   <div className="flex items-center justify-between">

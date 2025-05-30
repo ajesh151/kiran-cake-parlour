@@ -19,7 +19,7 @@ const MenuSection = () => {
           id: 1,
           name: 'Chocolate Birthday Delight',
           price: 'Rs.500',
-          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
           rating: 5,
           description: 'Rich chocolate cake with vanilla frosting and colorful decorations'
         },
@@ -27,7 +27,7 @@ const MenuSection = () => {
           id: 2,
           name: 'Rainbow Birthday Cake',
           price: 'Rs.600',
-          image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
           rating: 5,
           description: 'Multi-layered rainbow cake with buttercream frosting'
         },
@@ -49,7 +49,7 @@ const MenuSection = () => {
           id: 4,
           name: 'Elegant White Wedding Cake',
           price: 'Rs.1000',
-          image: 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
           rating: 5,
           description: 'Three-tier white wedding cake with elegant floral decorations'
         },
@@ -57,7 +57,7 @@ const MenuSection = () => {
           id: 5,
           name: 'Rose Garden Wedding Cake',
           price: 'Rs.800',
-          image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
           rating: 5,
           description: 'Beautiful rose-decorated wedding cake with gold accents'
         },
@@ -65,7 +65,7 @@ const MenuSection = () => {
           id: 6,
           name: 'Classic Tiered Wedding Cake',
           price: 'Rs.1200',
-          image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
           rating: 5,
           description: 'Four-tier classic wedding cake with intricate piping'
         }
@@ -107,19 +107,19 @@ const MenuSection = () => {
       items: [
         {
           id: 10,
-          name: 'Mini Chocolate Bento',
+          name: 'Make A Wish Bento',
           price: 'Rs.300',
-          image: '/lovable-uploads/bf0b22ec-6474-49d5-8c17-0d36cee77891.png',
+          image: '/lovable-uploads/2e683670-7b85-4e22-aeeb-ecf6d8eb0e57.png',
           rating: 5,
-          description: 'Small personal-sized chocolate cake perfect for individual celebrations'
+          description: 'Adorable blue bento cake with daisy decorations and "Make A Wish" message'
         },
         {
           id: 11,
-          name: 'Vanilla Berry Bento',
+          name: 'Happy Birthday Baby Bento',
           price: 'Rs.300',
-          image: '/lovable-uploads/7fceff04-0aab-4625-a305-d89ee0a276db.png',
+          image: '/lovable-uploads/2c0fb691-71f4-4b76-8527-080f5c15e961.png',
           rating: 5,
-          description: 'Personal vanilla cake topped with fresh berries and cream'
+          description: 'Sweet white bento cake with red heart decorations and birthday message'
         },
         {
           id: 13,
@@ -197,7 +197,12 @@ const MenuSection = () => {
           {currentCategory?.items.map(item => (
             <div key={item.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div className="relative h-64">
-                <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                <img 
+                  src={item.image} 
+                  alt={item.name} 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
                 <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full font-bold">
                   {item.price}
                 </div>

@@ -55,13 +55,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
-            <div className="relative">
+            <div className="flex items-center space-x-2">
               <img 
                 src="/lovable-uploads/4720b749-946d-4875-97c9-82e93591461a.png" 
                 alt="Kiran Cake Parlour" 
                 className="h-12 w-auto object-contain"
               />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
           </div>
           
